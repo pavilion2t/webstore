@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <script type="text/javascript">
+    function onload(){
+      if(typeof(Storage) == "undefined"){
+        alert("No support for web storage")
+      } else {
+        saveStorage.addEventListener("click", saveToLocalStorage)
+        loadStorage.addEventListener("click", loadFromLocalStorage)
+        clear.addEventListener("click", deleteLocalStorage)
+      }
+    }
+
+    function saveToLocalStorage(){
+      console.log(inputname.value)
+      localStorage.username = inputname.value
+    }
+
+    function loadFromLocalStorage(){
+      showLocalStorage.innerHTML = localStorage.username
+    }
+
+    function deleteLocalStorage(){
+      localStorage.clear()
+      showLocalStorage.innerHTML = localStorage.username
+    }
+    </script>
+  </head>
+
+  <body onload="onload()">
+    Please input the data you want to store:
+    <input type="text" id="inputname">
+
+    <button id="saveStorage">Save</button>
+    <button id="loadStorage">Load</button>
+    <button id="clear">Delete</button>
+
+    <div id="showLocalStorage"></div>
+  </body>
+  </html>
